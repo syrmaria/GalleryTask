@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class GalleryPagedAdapter extends PagedListAdapter<String, GalleryPagedAdapter.ImageHolder> {
     private static final String TAG = "GalleryPagedAdapter";
@@ -82,6 +83,7 @@ public class GalleryPagedAdapter extends PagedListAdapter<String, GalleryPagedAd
         void bind(String path) {
             Glide.with(itemView.getContext())
                     .load(path)
+                    .apply(RequestOptions.centerCropTransform())
                     .into(mThumbnail);
         }
 
